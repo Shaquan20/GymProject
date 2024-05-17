@@ -1,0 +1,236 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: rgba(0, 68, 204, 0.8);
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav a {
+    margin: 0 15px;
+    color: white;
+    text-decoration: none;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+}
+
+footer {
+    background-color: rgba(0, 68, 204, 0.8);
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+h1, h2 {
+    color: #0044cc;
+}
+
+#about img {
+    max-width: 100%;
+    height: auto;
+}
+
+form {
+    background: rgba(244, 244, 244, 0.9);
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+form div {
+    margin-bottom: 10px;
+}
+
+form label {
+    display: block;
+}
+
+form input, form select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #0044cc;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #003399;
+}
+
+#calendar {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#calendar table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#calendar th, #calendar td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+#calendar th {
+    background-color: #0044cc;
+    color: white;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+header {
+    text-align: center;
+    padding: 50px;
+    background: #333;
+    color: white;
+}
+
+.parallax {
+    height: 50vh;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#section1 {
+    background-image: url('c:\Users\Shaq\Desktop\FinalProject-Gym');
+}
+
+#section2 {
+    background-image: url('c:\Users\Shaq\Desktop\FinalProject-Gym');
+}
+
+.content {
+    height: 100vh;
+    background: #f4f4f4;
+    padding: 50px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.membership-form-section {
+    padding: 20px;
+    background-color: #fff;
+    max-width: 600px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.membership-form-section h2 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input, select, button {
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+#form-messages {
+    color: red;
+    text-align: center;
+}
+
+.service-box {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.map-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+  

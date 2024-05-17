@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trainer Booking Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="membership.html">Membership</a></li>
+                <li><a href="calendar.html">Book-A-Trainer</a></li>
+                
+            </ul>
+        </nav>
+        <h1>Book a Session with a Trainer</h1>
+    </header>
+
+    <section id="trainerBookingSection">
+        <form id="trainerBookingForm" name="trainerBookingForm" method="post" action="bookingSubmit.html">
+            <fieldset id="trainerInfo">
+                <legend>Trainer Information</legend>
+
+                <label for="trainerName">Select Trainer*</label>
+                <select id="trainerName" name="trainerName" required>
+                    <option value="">Choose a trainer</option>
+                    <option value="Trainer1">Kyle </option>
+                    <option value="Trainer2">Travis</option>
+                    <option value="Trainer3">Sabrina</option>
+                </select>
+
+                <label for="sessionDate">Select Date*</label>
+                <input name="sessionDate" id="sessionDate" required type="date" />
+            </fieldset>
+
+            <fieldset id="personalInfo">
+                <legend>Personal Information</legend>
+
+                <label for="fullName">Full Name*</label>
+                <input name="fullName" id="fullName" required type="text" />              
+
+                <label for="email">Email*</label>
+                <input name="email" id="email" required type="email" />
+
+                <label for="phone">Phone*</label>
+                <input name="phone" id="phone" required type="tel" pattern="^\d{10}$" />
+            </fieldset>   
+
+            <p id="footnote">* - Required Item</p>        
+            <input type="submit" id="subButton" value="Book Session" />         
+        </form>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const trainerBookingForm = document.getElementById('trainerBookingForm');
+
+            trainerBookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const trainerName = document.getElementById('trainerName').value;
+                const sessionDate = document.getElementById('sessionDate').value;
+                const fullName = document.getElementById('fullName').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                let isValid = true;
+
+                if (trainerName === '') {
+                    isValid = false;
+                    alert('Please select a trainer.');
+                }
+
+                if (sessionDate === '') {
+                    isValid = false;
+                    alert('Please select a date.');
+                }
+
+                if (fullName.trim() === '') {
+                    isValid = false;
+                    alert('Please enter your full name.');
+                }
+
+                if (!isValidEmail(email)) {
+                    isValid = false;
+                    alert('Please enter a valid email address.');
+                }
+
+                if (!isValidPhone(phone)) {
+                    isValid = false;
+                    alert('Please enter a valid phone number.');
+                }
+
+                if (isValid) {
+                    alert('Form submitted successfully!');
+                    // Uncomment the following line to actually submit the form
+                    // this.submit();
+                }
+            });
+
+            function isValidEmail(email) {
+                const emailRegex = /\S+@\S+\.\S+/;
+                return emailRegex.test(email);
+            }
+
+            function isValidPhone(phone) {
+                const phoneRegex = /^\d{10}$/;
+                return phoneRegex.test(phone);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Membership Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="membership.html">Membership</a></li>
+                <li><a href="calendar.html">Book-A-Trainer</a></li>
+            </ul>
+        </nav>
+        <h1><img src="gym_logo.png" alt="Gym Logo"></h1>
+    </header>
+
+    <section id="orderSection">       
+        <table id="orderTable">
+            <caption>Your Membership</caption>
+            <tr>
+                <td>Membership Level</td>
+                <td>
+                    <select id="membershipLevel" name="membershipLevel">
+                        <option value="20">Basic - $20/month</option>
+                        <option value="40">Premium - $40/month</option>
+                        <option value="60">Gold - $60/month</option>
+                    </select>
+                </td>
+                <td id="membershipCost" class="rightA">$20.00</td>
+            </tr>        
+            <tr>
+                <td colspan="2" class="rightA">Total</td>
+                <td id="totalCost" class="rightA">$20.00</td>
+            </tr>
+        </table>     
+    </section>
+
+    <section id="paySection">
+        <h1>Payment Form</h1>
+
+        <form id="membershipForm" name="membershipForm" method="post" action="paysubmit.html">         
+            <fieldset id="personalInfo">
+                <legend>Personal Information</legend>
+
+                <label for="fullName">Full Name*</label>
+                <input name="fullName" id="fullName" required type="text" />              
+
+                <label for="email">Email*</label>
+                <input name="email" id="email" required type="email" />
+
+                <label for="phone">Phone*</label>
+                <input name="phone" id="phone" required type="tel" pattern="^\d{10}$" />
+            </fieldset>   
+
+            <fieldset id="creditcard">
+                <legend>Credit Information</legend>
+
+                <label>Credit Card*</label>
+                <fieldset id="cards">
+                    <label class="cardLabel">
+                        <input name="credit" value="amex" type="radio" required />               
+                        <span>American Express</span>
+                    </label>
+                    <label class="cardLabel">               
+                        <input name="credit" value="discover" type="radio" />
+                        <span>Discover</span>
+                    </label>
+                    <label class="cardLabel">                              
+                        <input name="credit" value="master" type="radio" />
+                        <span>MasterCard</span>
+                    </label>
+                    <label class="cardLabel">                                    
+                        <input name="credit" value="visa" type="radio" />
+                        <span>Visa</span>
+                    </label>
+                </fieldset>          
+
+                <label for="cardNumber">Credit Card Number*</label>
+                <input name="cardNumber" id="cardNumber" required type="text"
+                    pattern="^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$"/>
+
+                <label for="expMonth">Expiration Date*</label>
+                <select id="expMonth" name="expMonth" required>
+                    <option value="">mm</option>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+                <span id="separator"> / </span>
+                <select id="expYear" name="expYear" required>
+                    <option value="">yy</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                    <option value="2028">2028</option>
+                </select>            
+
+                <label for="cvc">CVC*</label>
+                <input name="cvc" id="cvc" required pattern="^\d{3,4}$" type="text"/>
+            </fieldset>
+
+            <p id="footnote">* - Required Item</p>        
+            <input type="submit" id="subButton" value="Submit Payment" />         
+        </form>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const membershipForm = document.getElementById('membershipForm');
+            const membershipLevel = document.getElementById('membershipLevel');
+            const membershipCost = document.getElementById('membershipCost');
+            const totalCost = document.getElementById('totalCost');
+
+            membershipLevel.addEventListener('change', function() {
+                const selectedCost = parseFloat(this.value);
+                membershipCost.textContent = `$${selectedCost.toFixed(2)}`;
+                totalCost.textContent = `$${selectedCost.toFixed(2)}`;
+            });
+
+            membershipForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const fullName = document.getElementById('fullName').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const cardNumber = document.getElementById('cardNumber').value;
+                const expMonth = document.getElementById('expMonth').value;
+                const expYear = document.getElementById('expYear').value;
+                const cvc = document.getElementById('cvc').value;
+                let isValid = true;
+
+                if (fullName.trim() === '') {
+                    isValid = false;
+                    alert('Please enter your full name.');
+                }
+
+                if (!isValidEmail(email)) {
+                    isValid = false;
+                    alert('Please enter a valid email address.');
+                }
+
+                if (!isValidPhone(phone)) {
+                    isValid = false;
+                    alert('Please enter a valid phone number.');
+                }
+
+                if (!isValidCardNumber(cardNumber)) {
+                    isValid = false;
+                    alert('Please enter a valid credit card number.');
+                }
+
+                if (expMonth === '' || expYear === '') {
+                    isValid = false;
+                    alert('Please enter a valid expiration date.');
+                }
+
+                if (!isValidCVC(cvc)) {
+                    isValid = false;
+                    alert('Please enter a valid CVC.');
+                }
+
+                if (isValid) {
+                    alert('Form submitted successfully!');
+                    // Uncomment the following line to actually submit the form
+                    // this.submit();
+                }
+            });
+
+            function isValidEmail(email) {
+                const emailRegex = /\S+@\S+\.\S+/;
+                return emailRegex.test(email);
+            }
+
+            function isValidPhone(phone) {
+                const phoneRegex = /^\d{10}$/;
+                return phoneRegex.test(phone);
+            }
+
+            function isValidCardNumber(cardNumber) {
+                const cardNumberRegex = /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/;
+                return cardNumberRegex.test(cardNumber);
+            }
+
+            function isValidCVC(cvc) {
+                const cvcRegex = /^\d{3,4}$/;
+                return cvcRegex.test(cvc);
+            }
+        });
+    </script>
+</body>
+</html>
